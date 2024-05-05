@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: SSH Server
+      - name: SSH Server & build Image
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -17,13 +17,14 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script:  "cd /home/ubuntu/web-coba && bash cicd.sh"
           
-      - name: Build Docker image 
+      - name: login Dockerhub 
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          script: "docker tag web-coba:latest AJK-cicd:latest && docker push AJK-cicd:latest"
 
+      - name: Push Docker Image
+        run: docker tag web-coba:latest AJK-cicd:latest && docker push AJK-cicd:latest
 
   deploy:
     runs-on: ubuntu-latest
