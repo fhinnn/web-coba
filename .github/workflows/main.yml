@@ -24,7 +24,7 @@ jobs:
           logout: false
       - name: Build and push
         run: |
-          docker build -t coba-app .
+          cd /home/ubuntu/web-coba && docker build -t coba-app .
           docker tag coba-app ${{ secrets.DOCKER_USERNAME }}/coba-app
           docker push ${{ secrets.DOCKER_USERNAME }}/coba-app
 
