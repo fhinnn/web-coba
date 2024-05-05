@@ -40,5 +40,5 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/ajk-cicd:latest 
-            docker rm -f tes || true
+            docker container rm -f githubituproblematik || true
             docker run -d --name githubituproblematik -p 80:80 ${{ secrets.DOCKER_USERNAME }}/ajk-cicd:latest && docker exec -it githubituproblematik nginx
