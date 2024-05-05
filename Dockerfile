@@ -21,5 +21,3 @@ RUN docker-php-ext-install gd pdo pdo_mysql exif pcntl bcmath
 RUN chown -R www-data:www-data \
     /var/www/storage \
     /var/www/bootstrap/cache
-
-RUN php artisan key:generate && php artisan migrate && nginx
