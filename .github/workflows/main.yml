@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           logout: false
       - name: Push Docker Image
-        run: docker push web-coba
+        run: docker push fhinnn/coba-app
 
 
   deploy:
