@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker Image
-        run: docker tag web-coba:latest AJK-cicd:latest && docker push AJK-cicd:latest
+        run: docker tag web-coba:latest ajk-cicd:latest && docker push ajk-cicd:latest
 
   deploy:
     runs-on: ubuntu-latest
