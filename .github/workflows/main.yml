@@ -15,7 +15,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script:  "cd /home/ubuntu/web-coba && bash cicd.sh"
       - name: login Dockerhub 
         uses: docker/login-action@v3
         with:
