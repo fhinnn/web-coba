@@ -19,8 +19,8 @@ jobs:
 
       - name: Build Docker image 
         run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push $coba-app
+          echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+          docker push coba-app
 
   deploy:
     runs-on: ubuntu-latest
