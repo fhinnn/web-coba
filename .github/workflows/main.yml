@@ -22,13 +22,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           logout: false
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
       - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: fhinnn/ajk-cicd:latest
+        run: |
+          docker build -t coba-app .
+          docker tag coba-app ${{ secrets.DOCKER_USERNAME }}/coba-app
+          docker push ${{ secrets.DOCKER_USERNAME }}/coba-app
 
 
 
