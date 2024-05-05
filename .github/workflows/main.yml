@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     steps:
       - name: SSH Server
         uses: appleboy/ssh-action@master
@@ -14,12 +15,12 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
+          script:  "cd /home/ubuntu/web-coba && bash cicd.sh"
 
       - name: Build Docker image 
         run: |
-          cd /home/ubuntu/web-coba && bash cicd.sh
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push ${{ secrets.DOCKER_REGISTRY }}/coba-app
+          docker push $coba-app
 
   deploy:
     runs-on: ubuntu-latest
