@@ -41,4 +41,4 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/ajk-cicd:latest 
             docker container rm -f githubituproblematik || true
-            docker run -d --name githubituproblematik -p 80:80 ${{ secrets.DOCKER_USERNAME }}/ajk-cicd:latest && docker exec -it githubituproblematik nginx
+            docker run -d --name githubituproblematik -p 80:80 ${{ secrets.DOCKER_USERNAME }}/ajk-cicd:latest && docker exec githubituproblematik nginx
